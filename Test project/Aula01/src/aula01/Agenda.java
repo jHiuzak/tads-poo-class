@@ -1,46 +1,48 @@
 package aula01;
 
+import java.util.ArrayList;
+
 public class Agenda {
-    String pessoaNome;
-    int pessoaIdade;
-    float pessoaAltura;
-    String[] pessoas;
-
-    public Agenda(String pessoaNome, int pessoaIdade, float pessoaAltura, String[] pessoas) {
-        this.pessoaNome = pessoaNome;
-        this.pessoaIdade = pessoaIdade;
-        this.pessoaAltura = pessoaAltura;
-        this.pessoas = pessoas;
-    }
-
-    public String getPessoaNome() {
-        return pessoaNome;
-    }
-    public void setPessoaNome(String pessoaNome) {
-        this.pessoaNome = pessoaNome;
-    }
-    public int getPessoaIdade() {
-        return pessoaIdade;
-    }
-    public void setPessoaIdade(int pessoaIdade) {
-        this.pessoaIdade = pessoaIdade;
-    }
-    public float getPessoaAltura() {
-        return pessoaAltura;
-    }
-    public void setPessoaAltura(float pessoaAltura) {
-        this.pessoaAltura = pessoaAltura;
-    }
-    public String[] getPessoas() {
-        return pessoas;
-    }
-    public void setPessoas(String[] pessoas) {
-        this.pessoas = pessoas;
-    }
+    public ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
 
     public void armazenaPessoa(String nome, int idade, float altura) {
-        setPessoaNome(nome);
-        setPessoaIdade(idade);
-        setPessoaAltura(altura);
+        if(pessoas.size() < 3) {
+            Pessoa pessoa = new Pessoa(nome, idade, altura);
+            pessoas.add(pessoa);
+        }        
+    }
+
+    public void removePessoa(String nome) {
+        for(Pessoa pessoa : pessoas) {
+            String pessoaNome = pessoa.getNome();
+            if(pessoaNome == nome) {
+                pessoas.remove(pessoa);
+                break;
+            }
+        }
+    }
+
+    public void buscaPessoa(String nome) {
+        for(Pessoa pessoa : pessoas) {
+            String pessoaNome = pessoa.getNome();
+            if(pessoaNome == nome) {
+                int pessoaIndex = pessoas.indexOf(pessoa);
+                System.out.println("O index de " + nome + " é: " + pessoaIndex);
+                break;
+            }
+        }
+    }
+
+    public void imprimeAgenda() {
+        for(Pessoa pessoa : pessoas) {
+            System.out.println("\n" + pessoa.getNome());
+            System.out.println(pessoa.getIdade());
+            System.out.println(pessoa.getAltura() + "\n");
+        }
+    }
+
+    public void imprimePessoa(int index) {
+        Pessoa pessoa = pessoas.get(index);
+        System.out.println("A pessoa de index" + index + " é: " + pessoa.getNome());
     }
 }

@@ -3,11 +3,11 @@ package aula01;
 import java.util.Scanner;
 
 public class Elevador {
-    byte andarAtual;
-    byte andaresQuantidade;
-    byte passageirosCapacidade;
-    byte passageirosQuantidadeAtual;
-    byte terreo;
+    private int andarAtual;
+    private int andaresQuantidade;
+    private int passageirosCapacidade;
+    private int passageirosQuantidadeAtual;
+    private int terreo;
 
     public Elevador ()
     {
@@ -18,62 +18,62 @@ public class Elevador {
         this.terreo = terreo;
     }
 
-    public void setAndarAtual(byte andarAtual) {
+    public void setAndarAtual(int andarAtual) {
         this.andarAtual = andarAtual;
     }
 
-    public void setAndaresQuantidade(byte andaresQuantidade) {
+    public void setAndaresQuantidade(int andaresQuantidade) {
         this.andaresQuantidade = andaresQuantidade;
     }
 
-    public void setPassageirosCapacidade(byte passageirosCapacidade) {
+    public void setPassageirosCapacidade(int passageirosCapacidade) {
         this.passageirosCapacidade = passageirosCapacidade;
     }
 
-    public void setPassageirosQuantidadeAtual(byte passageirosQuantidadeAtual) {
+    public void setPassageirosQuantidadeAtual(int passageirosQuantidadeAtual) {
         this.passageirosQuantidadeAtual = passageirosQuantidadeAtual;
     }
 
-    public byte getAndarAtual() {
+    public int getAndarAtual() {
         return andarAtual;
     }
 
-    public byte getAndaresQuantidade() {
+    public int getAndaresQuantidade() {
         return andaresQuantidade;
     }
 
-    public byte getPassageirosCapacidade() {
+    public int getPassageirosCapacidade() {
         return passageirosCapacidade;
     }
 
-    public byte getPassageirosQuantidadeAtual() {
+    public int getPassageirosQuantidadeAtual() {
         return passageirosQuantidadeAtual;
     }
 
-    public byte getTerreo() {
+    public int getTerreo() {
         return terreo;
     }
 
-    public void setTerreo(byte terreo) {
+    public void setTerreo(int terreo) {
         this.terreo = terreo;
     }
 
-    public void inicializar(byte passageirosCapacidade, byte andaresQuantidade) {
+    public void inicializar(int passageirosCapacidade, int andaresQuantidade) {
         setPassageirosCapacidade(passageirosCapacidade);
         setAndaresQuantidade(andaresQuantidade);
     }
 
     public void entrar() {
-        byte passageirosQuantidadeAtual = getPassageirosQuantidadeAtual();
-        byte passageirosCapacidade = getPassageirosCapacidade();
+        int passageirosQuantidadeAtual = getPassageirosQuantidadeAtual();
+        int passageirosCapacidade = getPassageirosCapacidade();
 
-        if(passageirosQuantidadeAtual <= passageirosCapacidade) {
+        if(passageirosQuantidadeAtual < passageirosCapacidade) {
             setPassageirosQuantidadeAtual(++passageirosQuantidadeAtual);
         }
     }
 
     public void sair() {
-        byte passageirosQuantidadeAtual = getPassageirosQuantidadeAtual();
+        int passageirosQuantidadeAtual = getPassageirosQuantidadeAtual();
 
         if(passageirosQuantidadeAtual > 0) {
             setPassageirosQuantidadeAtual(--passageirosQuantidadeAtual);
@@ -81,8 +81,8 @@ public class Elevador {
     }
 
     public void subir() {
-        byte andaresQuantidade = getAndaresQuantidade();
-        byte andarAtual = getAndarAtual();
+        int andaresQuantidade = getAndaresQuantidade();
+        int andarAtual = getAndarAtual();
 
         if(andaresQuantidade > andarAtual) {
             setAndarAtual(++andarAtual);
@@ -90,8 +90,8 @@ public class Elevador {
     }
 
     public void descer() {
-        byte terreo = getTerreo();
-        byte andarAtual = getAndarAtual();
+        int terreo = getTerreo();
+        int andarAtual = getAndarAtual();
 
         if(andarAtual > terreo) {
             setAndarAtual(--andarAtual);
